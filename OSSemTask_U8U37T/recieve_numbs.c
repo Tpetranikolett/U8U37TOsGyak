@@ -16,6 +16,8 @@ int main(int argc, char* argv[])
 {
     int array[N+1];
 
+    int fd2 = mkfifo("result", 0666); //letrehozom a result csovezeteket
+
     int fd = open("numbers", O_RDONLY); //megnyitom a numbers csovezeteket
 
     if(fd == -1) //ellenorzom, hogy sikerult-e es ezt jelzem a felhasznalonak, hogy mi tortenik
@@ -53,8 +55,6 @@ int main(int argc, char* argv[])
     array[N] = q;
 
     printf("\n q is: %d", q); //az eredmenyt ki is iratom
-
-    int fd2 = mkfifo("result", 0666); //letrehozom a result csovezeteket
 
     if(fd2 == -1) //ellenorzom, hogy ez sikerult-e
     {

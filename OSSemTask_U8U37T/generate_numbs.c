@@ -67,6 +67,17 @@ int main(int argc, char* argv[])
     }
     else printf("\nJust opened the file: result for reading");
 
+    for(int i = 0; i < N + 1; i++)
+    {
+        if(read(fd, &array[i], sizeof(int)) == -1)
+        {
+            printf("\nCouldn't read number %d", i+1);
+            exit(-1);
+        }
+
+        printf("\nRecieved number %d, it is: %d", i+1, array[i]);
+    } 
+
     close(fd); //bezarom a result csovezeteket
 
     unlink("result"); //torlom a result csovezeteket
